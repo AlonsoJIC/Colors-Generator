@@ -5,24 +5,42 @@
     border: none;
     outline: none;
 }
-
 body{
     height: 100vh;
 }
 
-.container{
-    background-color: #fff;
-    width: 400px;
+/* TITLE */
+#titleDiv {
+    color: #fff;
+    text-align: center;
+}
+.mainTitle p{
+    font-family: 'Pacifico', cursive;    font-size: 48px;
+}
+.mainTitle span {
+    background: #121FCF;
+    background: linear-gradient(to right, #b90404, #fd8f53, #fae500, #00f004, #32cbcd, #0400ff, #340047);
+    -webkit-background-clip: text;
+    background-clip: 0;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+/* GRADIENT */
+#gradientDiv{
+    background-color: #ffffff63 ;
+    width: auto;
     padding: 50px 30px;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 60%;
     left: 50%;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
 }
 
-.container *:not(i){
+#gradientDiv *:not(i){
     font-family: 'Rubik', sans-serif;
 }
 
@@ -44,6 +62,13 @@ input[type="color"]{
 input[type="color"]::-webkit-color-swatch{
     border-radius: 20px;
     border: none;
+}
+
+#colorInputs button{
+    background-color: #ffffff;
+    border: solid 1px rgb(255, 0, 0);
+    border-radius: 10px;
+    color: #ff0000;
 }
 
 .buttons{
@@ -72,7 +97,7 @@ input[type="color"]::-webkit-color-swatch{
     color: #fff;
 }
 
-#submit{
+#addColorBtn{
     display: block;
     background-color: #4a6ee0;
     color: #fff;
@@ -84,7 +109,7 @@ input[type="color"]::-webkit-color-swatch{
 }
 
 .output{
-    background-color: #f0f2fc;
+    background-color: #f0f2fcb9;
 }
 
 #code{
