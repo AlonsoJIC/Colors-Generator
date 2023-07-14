@@ -94,23 +94,39 @@ function generateRandomColor() {
 }
 
 
-//PALETTES COLORS
+//PALETTES COLORS DIV1
 function selectPalette() {
   const predefinedPalettes = [
-    ['#ff0000', '#00ff00'],
-    ['#ffff00', '#ff00ff'],
-    ['#ffff00', '#ff00ff'],
-    ['#ffff00', '#ff00ff'],
-    ['#ffff00', '#ff00ff'],
+    ['#1baf92', '#a55df8'],
+    ['#e388ca', '#4f72c9'],
+    ['#e0dd65', '#e767ba'],
+    ['#daf7d9', '#81484b'],    
+    ['#e73d92', '#9fa353'],
+
+    ['#19bc99', '#bdf36d'],
+    ['#29e55c', '#137795'],
+    ['#17e8e5', '#45c981'],
+    ['#4372a0', '#2edcb5'],
+    ['#8dbdd1', '#482dba'],
+
+    ['#31104e', '#9dfdd0'],    
+    ['#43d1b0', '#911e58'],    
+    ['#24099a', '#a622e9'],    
+    ['#8988eb', '#000000'],    
+    ['#000000', '#461ff8'],    
   ];
 
   paletteContainer.innerHTML = "";
-
+  let paletteRow;
   predefinedPalettes.forEach((palette, index) => {
+    if (index % 5 === 0) {
+      paletteRow = document.createElement("div");
+      paletteRow.className = "palette-row";
+      paletteContainer.appendChild(paletteRow);
+    }
+    
     let paletteDiv = document.createElement("div");
     paletteDiv.className = "palette";
-    paletteDiv.style.width = "50px";
-    paletteDiv.style.height = "50px";
     paletteDiv.style.background = `linear-gradient(to bottom, ${palette.join(", ")})`;
 
     paletteDiv.addEventListener("click", function() {
@@ -118,10 +134,8 @@ function selectPalette() {
       selectPalette(paletteDiv);
     });
 
-    paletteContainer.appendChild(paletteDiv);
+    paletteRow.appendChild(paletteDiv);
   });
-
-  paletteContainer.style.display = "block";
 }
 
 function applyPalette(palette) {

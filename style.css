@@ -138,6 +138,9 @@ input[type="color"]:hover {
     background-color: #4a6ee0;
     color: #fff;
 }
+.rotate-icon i{
+    transform: rotate(45deg);
+}
 /* /ARROWS BUTTONS*/
 
 /* INPUT WITH COLOR GENERATED TEXT AND COPY BUTTON */
@@ -199,9 +202,53 @@ input[type="color"]:hover {
 }
 /* /DELETE COLOR BUTTON */
 
+/* PALETTES TITLE */
+#palettesTitle {
+    color: #fff;
+    text-align: center;
+}
+#palettesTitle h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 42px;
+    text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+}
+/* PALETTES TITLE */
 
-
-
+/* PALETTES EXAMPLES */
+.palette-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+.palette {
+    border: solid 2px rgb(0, 0, 0);
+    border-radius: 30px;
+    width: 20%;
+    height: 20vh;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px #000000;
+}
+@media screen and (max-width: 992px) {
+    .palette-row {
+      flex-wrap: wrap;
+    }
+    .palette {
+      width: 30%;
+      height: 25vh;
+    }
+}
+@media screen and (max-width: 576px) {
+    .palette {
+      width: 45%;
+      height: 20vh;
+    }
+}
+.palette:hover {
+    box-shadow: 3px 4px 6px #000000;
+}
+/* /PALETTES EXAMPLES */
 
 
 /* FOOTER */
