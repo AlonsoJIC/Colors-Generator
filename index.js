@@ -5,13 +5,20 @@ let outputCode = document.getElementById("code");
 let addColorBtn = document.getElementById("addColorBtn");
 let colorInputs = document.getElementById("colorInputs");
 let colors = [colorOne.value, colorTwo.value];
+let randomColorBtn = document.getElementById("randomColorBtn");
+let selectPaletteBtn = document.getElementById("selectPaletteBtn");
+let paletteContainer = document.getElementById("paletteContainer");
 
 addColorBtn.addEventListener("click", addColorInput);
 colorOne.addEventListener("input", updateGradient);
 colorTwo.addEventListener("input", updateGradient);
+document.getElementById("copy").addEventListener("click", copyText);
+randomColorBtn.addEventListener("click", generateRandomColor);
+
+selectPalette();
 
 function setDirection(value, _this) {
-  let directions = document.querySelectorAll(".buttons button");
+  let directions = document.querySelectorAll(".arrowsButtons button");
   for (let i of directions) {
     i.classList.remove("active");
   }
@@ -23,39 +30,103 @@ function setDirection(value, _this) {
 function updateGradient() {
   let gradientColors = Array.from(colorInputs.getElementsByTagName("input")).map(input => input.value);
   outputCode.value = `background-image: linear-gradient(${currentDirection}, ${gradientColors.join(", ")})`;
-  document.getElementsByTagName("BODY")[0].style.backgroundImage = `linear-gradient(${currentDirection}, ${gradientColors.join(", ")})`;
+  document.body.style.backgroundImage = `linear-gradient(${currentDirection}, ${gradientColors.join(", ")})`;
 }
 
 function addColorInput() {
-  let newColorInput = document.createElement("input");
-  newColorInput.type = "color";
-  newColorInput.addEventListener("input", updateGradient);
+  let newColorInput = document.createElement("div");
+  newColorInput.className = "color-input";
+
+  let input = document.createElement("input");
+  input.type = "color";
+  input.addEventListener("input", updateGradient);
 
   let removeColorBtn = document.createElement("button");
-  removeColorBtn.innerHTML = "Delete";
+  removeColorBtn.innerHTML = "X";
+  removeColorBtn.className = "remove-color-btn";
   removeColorBtn.addEventListener("click", function() {
     removeColorInput(newColorInput);
   });
 
-  let colorInputContainer = document.createElement("div");
-  colorInputContainer.appendChild(newColorInput);
-  colorInputContainer.appendChild(removeColorBtn);
-
-  colorInputs.appendChild(colorInputContainer);
-  colors.push(newColorInput.value);
+  newColorInput.appendChild(input);
+  newColorInput.appendChild(removeColorBtn);
+  colorInputs.appendChild(newColorInput);
+  colors.push(input.value);
   updateGradient();
+
+  colorInputs.style.display = "flex";
+  colorInputs.style.alignItems = "center";
+  colorInputs.style.gap = "10px";
 }
 
-function removeColorInput(inputElement) {
+function removeColorInput(colorInput) {
   if (colorInputs.childElementCount <= 2) {
     alert("Debes mantener al menos 2 colores");
     return;
   }
 
-  let colorInputContainer = inputElement.parentNode;
-  let index = Array.from(colorInputContainer.parentNode.children).indexOf(colorInputContainer);
+  let input = colorInput.querySelector("input");
+  let index = Array.from(colorInputs.children).indexOf(colorInput);
   colors.splice(index, 1);
-  colorInputs.removeChild(colorInputContainer);
+  colorInputs.removeChild(colorInput);
+  updateGradient();
+}
+
+function copyText() {
+  let codeTextarea = document.getElementById("code");
+  codeTextarea.select();
+  codeTextarea.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+
+  copyMessage.style.display = "inline";
+  setTimeout(function() {
+    copyMessage.style.display = "none";
+  }, 2000);
+}
+
+function generateRandomColor() {
+  let colorInputs = document.querySelectorAll("#colorInputs input");
+  colorInputs.forEach(input => {
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    input.value = "#" + randomColor;
+  });
+  updateGradient();
+}
+
+
+//PALETTES COLORS
+function selectPalette() {
+  const predefinedPalettes = [
+    ['#ff0000', '#00ff00'],
+    ['#ffff00', '#ff00ff'],
+    ['#ffff00', '#ff00ff'],
+    ['#ffff00', '#ff00ff'],
+    ['#ffff00', '#ff00ff'],
+  ];
+
+  paletteContainer.innerHTML = "";
+
+  predefinedPalettes.forEach((palette, index) => {
+    let paletteDiv = document.createElement("div");
+    paletteDiv.className = "palette";
+    paletteDiv.style.width = "50px";
+    paletteDiv.style.height = "50px";
+    paletteDiv.style.background = `linear-gradient(to bottom, ${palette.join(", ")})`;
+
+    paletteDiv.addEventListener("click", function() {
+      applyPalette(palette);
+      selectPalette(paletteDiv);
+    });
+
+    paletteContainer.appendChild(paletteDiv);
+  });
+
+  paletteContainer.style.display = "block";
+}
+
+function applyPalette(palette) {
+  colorOne.value = palette[0];
+  colorTwo.value = palette[1];
   updateGradient();
 }
 

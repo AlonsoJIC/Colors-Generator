@@ -1,12 +1,16 @@
-*, *::before, *::after{
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     border: none;
     outline: none;
 }
-body{
+body {
     height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* TITLE */
@@ -14,71 +18,114 @@ body{
     color: #fff;
     text-align: center;
 }
-.mainTitle p{
-    font-family: 'Pacifico', cursive;    font-size: 48px;
+.mainTitle a {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+    1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
 }
 .mainTitle span {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
     background: #121FCF;
     background: linear-gradient(to right, #b90404, #fd8f53, #fae500, #00f004, #32cbcd, #0400ff, #340047);
     -webkit-background-clip: text;
     background-clip: 0;
     -webkit-text-fill-color: transparent;
 }
+/* TITLE */
 
-
-
-/* GRADIENT */
-#gradientDiv{
-    background-color: #ffffff63 ;
-    width: auto;
-    padding: 50px 30px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 60%;
+/* MAIN DIV */ /* MAIN DIV *//* MAIN DIV *//* MAIN DIV *//* MAIN DIV *//* MAIN DIV *//* MAIN DIV */
+#gradientCont{
+    background-color: #ffffff63;
+    text-align: center;
+    width: 50%;
+    padding: 30px 30px;
+    top: 55%;
     left: 50%;
     border-radius: 25px;
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.486);
 }
 
-#gradientDiv *:not(i){
-    font-family: 'Rubik', sans-serif;
-}
-
-.colors{
+/* COLORS INPUTS AND GENERATED INPUTS */
+.colors {
+    margin-left: 1px;
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
-
-input[type="color"]{
+#colorInputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+/* ELEMENTS INPUTS TYPE COLORS */
+input[type="color"] {
     appearance: none;
     -webkit-appearance: none;
     background-color: transparent;
-    width: 100px;
+    width: 75px;
     height: 45px;
     cursor: pointer;
 }
-
-input[type="color"]::-webkit-color-swatch{
-    border-radius: 20px;
+input[type="color"]::-webkit-color-swatch {
+    border-radius:20px;
     border: none;
 }
-
-#colorInputs button{
-    background-color: #ffffff;
-    border: solid 1px rgb(255, 0, 0);
-    border-radius: 10px;
-    color: #ff0000;
+input[type="color"]:hover {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 2px 1px 3px #000000;
 }
+/* /ELEMENTS INPUTS TYPE COLORS */
+/* /COLOR INPUTS AND GENERATED INPUTS */
 
-.buttons{
+/* ADD INPUT COLOR AND RANDOM COLORS BUTTONS*/
+.addColorButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fugaz One', cursive;
+    font-size: 18px;
+}
+#addColorBtn {
+    width: 30%;
+    background-color: #4a6ee0;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 1px 2px 4px #000000;
+    padding: 5px 0px;
+}
+#randomColorBtn {
+    width: 30%;
+    background-color: #4a6ee0;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 1px 2px 4px #000000;
+    padding: 5px 0px;
+}
+#randomColorBtn:hover {
+    background-color: #314ba0;
+    box-shadow: 2px 4px 8px #000000;
+}
+#addColorBtn:hover{
+    background-color: #314ba0;
+    box-shadow: 2px 4px 8px #000000;
+}
+/* /ADD INPUT COLOR AND RANDOM COLORS BUTTONS*/
+
+/* ARROWS BUTTONS*/
+.arrowsButtons {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 30px 0;
 }
-
-.buttons button{
+.arrowsButtons button {
     height: 35px;
     width: 35px;
     background-color: transparent;
@@ -86,48 +133,80 @@ input[type="color"]::-webkit-color-swatch{
     border-radius: 5px;
     cursor: pointer;
 }
-
-.rotate-icon i{
-    transform: rotate(45deg);
-}
-
-.buttons .active{
+.arrowsButtons .active {
     border: none;
     background-color: #4a6ee0;
     color: #fff;
 }
+/* /ARROWS BUTTONS*/
 
-#addColorBtn{
-    display: block;
-    background-color: #4a6ee0;
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 70px;
-    border-radius: 25px;
-    margin: 0 auto 30px auto;
-    cursor: pointer;
+/* INPUT WITH COLOR GENERATED TEXT AND COPY BUTTON */
+.output {
+    background-color: #f0f2fc9c;
+    border-radius: 20px;
 }
-
-.output{
-    background-color: #f0f2fcb9;
-}
-
-#code{
+#code {
     width: 100%;
     resize: none;
-    color: #30304a;
+    color: #000000;
     padding: 10px 20px;
     background-color: transparent;
+    text-align: center;
 }
-
-#copy{
-    font-size: 14px;
+#copy {
+    border-radius: 20px;
+    font-family: 'Fugaz One', cursive;
+    font-size: 18px;
     background-color: #4a6ee0;
     color: #fff;
     position: relative;
-    left: 85%;
-    bottom: 10px;
-    border-radius: 3px;
-    padding: 5px;
+    bottom: 18px;
+    border-radius: 20px;
+    padding: 5px 15%;
+    cursor: pointer;
+    box-shadow: 1px 2px 4px #000000;
+}
+#copy:hover {
+    background-color: #314ba0;
+    box-shadow: 2px 4px 8px #000000;
+}
+/* /INPUT WITH COLOR GENERATED TEXT AND COPY BUTTON*/
+
+/* DELETE COLOR BUTTON */
+.color-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.remove-color-btn {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 22px;
+    height: 21px;
+    background-color: #af0000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
     cursor: pointer;
 }
+.remove-color-btn:hover{
+    background-color: #ff0000;
+}
+/* /DELETE COLOR BUTTON */
+
+
+
+
+
+
+/* FOOTER */
+#footerDiv svg{
+    max-height: 24px;
+    max-width: 24px;
+}
+/* /FOOTER */
